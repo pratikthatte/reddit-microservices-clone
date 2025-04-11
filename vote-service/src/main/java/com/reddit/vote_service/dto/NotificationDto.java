@@ -1,6 +1,6 @@
 package com.reddit.vote_service.dto;
 
-public class NotificationDto {
+public class NotificationDto{
 	private Long userId;
     private String targetType;
     private Long targetId;

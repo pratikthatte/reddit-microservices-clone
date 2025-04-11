@@ -7,5 +7,5 @@ import com.reddit.vote_service.entity.Vote;
 import com.reddit.vote_service.entity.VoteType;
 
 public interface VoteRepository extends JpaRepository<Vote,Long>{
-	Long countByTargetIdAndTargetTypeAndVoteType(Long targetId, VoteType voteType, TargetType targetType);
+	Long countByTargetIdAndTargetTypeAndVoteType(Long targetId, TargetType targetType, VoteType voteType);
 }
