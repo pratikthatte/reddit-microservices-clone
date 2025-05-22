@@ -37,7 +37,8 @@ public class CommentService {
 		comment.setCommentText(commentDto.getCommentText());
 		comment.setUserId(userServiceClient.getCurrentUserId());
 		comment.setPostId(commentDto.getPostId());
-		comment.setParentComment(commentRepository.findById(commentDto.getParentCommentId()).orElseThrow(() -> new CommentServiceException("Error setting parent comment with id: ")));
+		if(commentDto.getParentCommentId()!=null)
+			comment.setParentComment(commentRepository.findById(commentDto.getParentCommentId()).orElseThrow(() -> new CommentServiceException("Error setting parent comment with id: ")));
 		comment.setCreationTime(Instant.now());
 		comment.setVoteCount((long) 0);
 		return comment;
@@ -47,7 +48,8 @@ public class CommentService {
 		commentDto.setCommentId(comment.getCommentId());
 		commentDto.setCommentText(comment.getCommentText());
 		commentDto.setCreationTime(comment.getCreationTime());
-		commentDto.setParentCommentId(comment.getParentComment().getCommentId());
+		if(comment.getParentComment()!=null)
+			commentDto.setParentCommentId(comment.getParentComment().getCommentId());
 		commentDto.setPostId(comment.getPostId());
 		commentDto.setUserId(comment.getUserId());
 		commentDto.setVoteCount(comment.getVoteCount());

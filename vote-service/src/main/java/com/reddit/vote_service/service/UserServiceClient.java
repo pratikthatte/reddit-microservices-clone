@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.reddit.vote_service.config.FeignClientConfig;
 import com.reddit.vote_service.dto.UserDto;
 
-@FeignClient(name = "user-service", url = "http://localhost:8081/api/users", configuration = FeignClientConfig.class)
+@FeignClient(name = "user-service", configuration = FeignClientConfig.class)
 public interface UserServiceClient {
 	@GetMapping("/{userId}")
 	UserDto getUserDetails(Long userId);
